@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.A.R.V.I.S. | The Personal AI Operating System</title>
+    <!-- Google Fonts for High-Tech feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scroll-indicator"></div>
+    </div>
+
+    <!-- Background Particle Canvas representing the Cortex Grid -->
+    <canvas id="cortex-canvas"></canvas>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <span class="logo-accent">◆</span> J.A.R.V.I.S.
+            </div>
+            <nav class="nav-links">
+                <a href="#features">Architecture</a>
+                <a href="#pipeline">Pipeline</a>
+                <a href="#explorer">Interface</a>
+                <a href="#estimator">Calibrator</a>
+                <a href="#console">Terminal</a>
+                <a href="#pricing">Packages</a>
+                <button class="nav-btn" onclick="scrollToSection('pricing')">Deploy</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge scroll-reveal fade-up">OS-LEVEL LOCAL COGNITIVE CORE</div>
+            <h1 class="scroll-reveal fade-up-delay-1">Deploy the Ultimate <span class="gradient-text">Local AI Assistant</span></h1>
+            <p class="hero-subtitle scroll-reveal fade-up-delay-2">
+                A secure, multi-threaded AI operating system for Windows. Combines offline wake word voice streaming, SQLite3 semantic vector memory recall, and a modular Office Suite natively.
+            </p>
+            <div class="hero-actions scroll-reveal fade-up-delay-3">
+                <button class="btn btn-glowing" onclick="scrollToSection('pricing')">Select Deployment</button>
+                <button class="btn btn-outline" onclick="scrollToSection('console')">Launch Live CLI</button>
+            </div>
+        </div>
+        <!-- Holographic Central Core Graphic -->
+        <div class="hero-graphic scroll-reveal scale-in">
+            <div class="holo-core" id="hero-holo-core">
+                <div class="ring ring-outer"></div>
+                <div class="ring ring-mid"></div>
+                <div class="ring ring-inner"></div>
+                <div class="core-dot"></div>
+                <div class="core-scanning-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Overview cards (with 3D Perspective Roll) -->
+    <section class="features-grid" id="features">
+        <div class="section-header scroll-reveal fade-up">
+            <h2>Under the Hood: Subsystem Architecture</h2>
+            <p>J.A.R.V.I.S. bypasses cloud latency and API subscription locks by executing models and database sweeps locally.</p>
+        </div>
+        <div class="cards-container">
+            <div class="card scroll-reveal scroll-3d">
+                <div class="card-icon">🎙️</div>
+                <h3>Offline Voice Matrix</h3>
+                <p>Natively streams microphone input via PyAudio, utilizing local <strong>openwakeword</strong> engine models. If internet connection drops, falls back instantly to offline TTS voice synthesis.</p>
+            </div>
+            <div class="card scroll-reveal scroll-3d">
+                <div class="card-icon">🧠</div>
+                <h3>Semantic Memory Core</h3>
+                <p>Employs local <strong>nomic-embed-text</strong> models for text indexing. Logs preferences, schedules, and codebases into a threaded SQLite3 store with secure transaction memory locking.</p>
+            </div>
+            <div class="card scroll-reveal scroll-3d">
+                <div class="card-icon">📝</div>
+                <h3>Modular Office Suite</h3>
+                <p>A decoupled package (<code>systems/office</code>) running Word, Excel, and PDF. Supports active-column formula sums, automated citations scanning, and Math rendering via matplotlib.</p>
+            </div>
+            <div class="card scroll-reveal scroll-3d">
+                <div class="card-icon">🛰️</div>
+                <h3>Overwatch Telemetry</h3>
+                <p>Establishes an administrative loop back to the cloud. Manages remote cron loops via the <code>chronos_daemon</code>, executes background PowerShell tasks, and updates nodes seamlessly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Core Pipeline Visualizer -->
+    <section class="pipeline-section" id="pipeline">
+        <div class="section-header scroll-reveal fade-up">
+            <h2>Core Cognitive Pipeline Flow</h2>
+            <p>Hover or click on any pipeline node to inspect real-time local execution routing and active hooks.</p>
+        </div>
+        
+        <div class="pipeline-container scroll-reveal scale-in">
+            <div class="pipeline-flow">
+                <!-- Node 1 -->
+                <div class="pipeline-node active" onclick="showPipelineDetails('audio')">
+                    <div class="node-icon">🎙️</div>
+                    <div class="node-label">Audio Input</div>
+                    <div class="node-status">Streaming</div>
+                </div>
+                
+                <div class="pipeline-connector"><div class="connector-glow"></div></div>
+                
+                <!-- Node 2 -->
+                <div class="pipeline-node" onclick="showPipelineDetails('wakeword')">
+                    <div class="node-icon">🔔</div>
+                    <div class="node-label">Wakeword Filter</div>
+                    <div class="node-status">Scanning</div>
+                </div>
+                
+                <div class="pipeline-connector"><div class="connector-glow"></div></div>
+                
+                <!-- Node 3 -->
+                <div class="pipeline-node" onclick="showPipelineDetails('cognitive')">
+                    <div class="node-icon">🧠</div>
+                    <div class="node-label">Cognitive Core</div>
+                    <div class="node-status">Ready</div>
+                </div>
+                
+                <div class="pipeline-connector"><div class="connector-glow"></div></div>
+                
+                <!-- Node 4 -->
+                <div class="pipeline-node" onclick="showPipelineDetails('memory')">
+                    <div class="node-icon">💾</div>
+                    <div class="node-label">Memory Uplink</div>
+                    <div class="node-status">Locked</div>
+                </div>
+                
+                <div class="pipeline-connector"><div class="connector-glow"></div></div>
+                
+                <!-- Node 5 -->
+                <div class="pipeline-node" onclick="showPipelineDetails('dispatch')">
+                    <div class="node-icon">🚀</div>
+                    <div class="node-label">System Dispatch</div>
+                    <div class="node-status">Idle</div>
+                </div>
+            </div>
+            
+            <!-- Pipeline details panel -->
+            <div class="pipeline-details" id="pipeline-details-panel">
+                <h4 id="pipe-title">🎙️ Audio Input Subsystem</h4>
+                <p id="pipe-desc">Streams real-time microphone captures via standard PyAudio chunks, buffering audio buffers into local memory pools for active wakeword filtering.</p>
+                <div class="pipe-meta">
+                    <div class="meta-row"><strong>Active Subsystem:</strong> <code id="pipe-file">systems/voice_wake_core</code></div>
+                    <div class="meta-row"><strong>Local Port:</strong> <span id="pipe-port">None (Device Hardware Direct)</span></div>
+                    <div class="meta-row"><strong>Core Dependency:</strong> <code id="pipe-dep">PyAudio / Wave</code></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabbed Feature Explorer (Interactive GUI Mockups) -->
+    <section class="explorer-section" id="explorer">
+        <div class="section-header scroll-reveal fade-up">
+            <h2>Subsystem GUI Panels</h2>
+            <p>Visual overlays designed in Python's CustomTkinter interface, rendered with responsive styling.</p>
+        </div>
+        <div class="explorer-container scroll-reveal scale-in">
+            <!-- Tabs Navigation -->
+            <div class="explorer-tabs">
+                <button class="tab-link active" onclick="switchTab(event, 'island')">Dynamic Island</button>
+                <button class="tab-link" onclick="switchTab(event, 'office')">AI Office Suite</button>
+                <button class="tab-link" onclick="switchTab(event, 'diagnostics')">Diagnostics Loop</button>
+                <button class="tab-link" onclick="switchTab(event, 'security')">Security Sentry</button>
+                <button class="tab-link" onclick="switchTab(event, 'swarm-panel')">Swarm Orchestration</button>
+            </div>
+            <!-- Tabs Content -->
+            <div class="explorer-content">
+                <div id="island" class="tab-panel active">
+                    <div class="mockup-frame">
+                        <div class="mockup-header"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="tab-title-text">systems/visuals_core</span></div>
+                        <div class="island-mockup">
+                            <div class="island-pill">
+                                <span class="island-dot"></span>
+                                <span class="island-text">🎙️ WAKE_WORD DETECTED: "JARVIS"</span>
+                            </div>
+                            <div class="waveforms">
+                                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                            </div>
+                            <div class="island-log">"pyaudio.stream.read: listening for user instructions..."</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="office" class="tab-panel">
+                    <div class="mockup-frame">
+                        <div class="mockup-header"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="tab-title-text">systems/office/document_processor</span></div>
+                        <div class="office-mockup">
+                            <div class="office-ribbon">
+                                <div class="ribbon-btn active" id="ribbon-btn-scale" onclick="runOfficeAction('scale')">Marginal Scaling</div>
+                                <div class="ribbon-btn" id="ribbon-btn-bib" onclick="runOfficeAction('bib')">Auto-Bibliography</div>
+                                <div class="ribbon-btn" id="ribbon-btn-math" onclick="runOfficeAction('math')">Math Renderer</div>
+                                <div class="ribbon-btn active" id="ribbon-btn-nav" onclick="runOfficeAction('nav')">Nav Pane</div>
+                            </div>
+                            <div class="office-body">
+                                <div class="office-sidebar" id="office-headings-sidebar">
+                                    <h4>Outline Headings</h4>
+                                    <ul>
+                                        <li>◆ 1. Executive Summary</li>
+                                        <li>◆ 2. Model Routing</li>
+                                        <li>◆ 3. System Scorecard</li>
+                                    </ul>
+                                </div>
+                                <div class="office-canvas">
+                                    <div class="canvas-page" id="office-canvas-page">
+                                        <h3 style="color:#00E5FF">1. Executive Summary</h3>
+                                        <p>The vector memory locks during write cycles. Local embeddings run concurrently. Swarm agents execute self-healing steps if commands crash...</p>
+                                        <p style="font-size:11px; color:#f59e0b; margin-top:20px;">[1] J.A.R.V.I.S. Architectural Sweep Report (2026).</p>
+                                        
+                                        <!-- Dynamic Bibliography Slot -->
+                                        <div id="office-bib-slot"></div>
+                                        
+                                        <!-- Dynamic Math Equation Slot -->
+                                        <div id="office-math-slot"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="diagnostics" class="tab-panel">
+                    <div class="mockup-frame">
+                        <div class="mockup-header"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="tab-title-text">systems/diagnostics_monitor</span></div>
+                        <div class="diag-mockup">
+                            <div class="diag-grid">
+                                <div class="diag-card">
+                                    <h5>LOCAL EMBEDDINGS</h5>
+                                    <div class="diag-status ok">OLLAMA ACTIVE [nomic-embed-text]</div>
+                                    <p>Zero external API calls. Encrypted vector maps.</p>
+                                </div>
+                                <div class="diag-card">
+                                    <h5>PERSISTENCE STABILITY</h5>
+                                    <div class="diag-status ok">SQLITE LOCK ACQUIRED</div>
+                                    <p>Thread-safe locks resolve concurrent data updates.</p>
+                                </div>
+                                <div class="diag-card">
+                                    <h5>BACKGROUND SCHEDULER</h5>
+                                    <div class="diag-status ok">CHRONOS DAEMON RUNNING</div>
+                                    <p>Auto-checking background cron alerts.</p>
+                                </div>
+                                <div class="diag-card">
+                                    <h5>LOCAL SANDBOX SECURITY</h5>
+                                    <div class="diag-status secure">WEB_HOST RESTRICTED</div>
+                                    <p>Flask local server bound securely to 127.0.0.1.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="security" class="tab-panel">
+                    <div class="mockup-frame">
+                        <div class="mockup-header"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="tab-title-text">core/security_sentry</span></div>
+                        <div class="security-mockup">
+                            <div class="radar-scan">
+                                <div class="radar-line"></div>
+                                <div class="blip" style="top:30%; left:40%;"></div>
+                                <div class="blip" style="top:60%; left:70%;"></div>
+                            </div>
+                            <div class="sec-feed">
+                                <div class="feed-line">[SEC] Telemetry bridge handshake established.</div>
+                                <div class="feed-line">[SEC] Overwatch token authentication: VALIDATED.</div>
+                                <div class="feed-line warn">[SEC] Flask API bound to loopback. WAN access closed (Tunneling only).</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="swarm-panel" class="tab-panel">
+                    <div class="mockup-frame">
+                        <div class="mockup-header"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="tab-title-text">systems/swarm_coordinator</span></div>
+                        <div class="swarm-mockup">
+                            <div class="swarm-visualization">
+                                <div class="swarm-node-grid">
+                                    <div class="swarm-node" id="swarm-node-researcher">
+                                        <div class="node-status-glow"></div>
+                                        <span class="node-icon">🔍</span>
+                                        <span class="node-title">Researcher</span>
+                                        <span class="node-state">IDLE</span>
+                                    </div>
+                                    <div class="swarm-node" id="swarm-node-coder">
+                                        <div class="node-status-glow"></div>
+                                        <span class="node-icon">💻</span>
+                                        <span class="node-title">Developer</span>
+                                        <span class="node-state">IDLE</span>
+                                    </div>
+                                    <div class="swarm-node" id="swarm-node-auditor">
+                                        <div class="node-status-glow"></div>
+                                        <span class="node-icon">🛡️</span>
+                                        <span class="node-title">Auditor</span>
+                                        <span class="node-state">IDLE</span>
+                                    </div>
+                                    <div class="swarm-node" id="swarm-node-sentry">
+                                        <div class="node-status-glow"></div>
+                                        <span class="node-icon">🛰️</span>
+                                        <span class="node-title">Sentry</span>
+                                        <span class="node-state">IDLE</span>
+                                    </div>
+                                </div>
+                                <svg class="swarm-paths-svg">
+                                    <!-- Dynamic path lines connecting elements -->
+                                    <path id="path-res-cod" d="M 50 25 L 150 25" fill="none" stroke="rgba(0,229,255,0.15)" stroke-width="2" />
+                                    <path id="path-cod-aud" d="M 150 25 L 150 125" fill="none" stroke="rgba(0,229,255,0.15)" stroke-width="2" />
+                                    <path id="path-aud-sen" d="M 150 125 L 50 125" fill="none" stroke="rgba(0,229,255,0.15)" stroke-width="2" />
+                                    <path id="path-sen-res" d="M 50 125 L 50 25" fill="none" stroke="rgba(0,229,255,0.15)" stroke-width="2" />
+                                </svg>
+                            </div>
+                            <div class="swarm-console">
+                                <div class="swarm-console-header">
+                                    <span>SWARM MATRIX CONTROLLER DAEMON</span>
+                                    <button class="btn-micro" id="btn-deploy-swarm" onclick="deploySwarmDemo(event)">⚡ DEPLOY LOCAL SWARM</button>
+                                </div>
+                                <div class="swarm-console-log" id="swarm-log">
+                                    <div class="log-entry system">[SYSTEM] Swarm matrix offline. Ready for client authorization...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Terminal Console Mockup -->
+    <section class="console-section" id="console">
+        <div class="section-header scroll-reveal fade-up">
+            <h2>Command Console Simulator</h2>
+            <p>Query the local J.A.R.V.I.S. command matrix directly. Commands are parsed locally on the machine.</p>
+        </div>
+        <div class="console-wrapper">
+            <div class="console-frame scroll-reveal slide-left" id="console-terminal-card">
+                <div class="console-header">
+                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                    <span class="console-title">jarvis_terminal.exe // core/action_dispatcher</span>
+                </div>
+                <div class="console-body" id="console-body">
+                    <div class="cli-line">J.A.R.V.I.S. Core [Version 3.4.0]</div>
+                    <div class="cli-line">Secure Local loopback active. Type <span style="color:#00E5FF">/help</span> to begin.</div>
+                    <div class="cli-line">&nbsp;</div>
+                </div>
+                <div class="console-input-row">
+                    <span class="prompt">C:\Users\Admin></span>
+                    <input type="text" id="console-input" placeholder="Type command here..." onkeypress="handleConsoleInput(event)">
+                </div>
+            </div>
+            <!-- Preset commands sidebar -->
+            <div class="console-presets scroll-reveal slide-right">
+                <h4>Diagnostics Presets</h4>
+                <button class="preset-btn" onclick="runPreset('/diagnose')">/diagnose</button>
+                <button class="preset-btn" onclick="runPreset('/sonar')">/sonar</button>
+                <button class="preset-btn" onclick="runPreset('/swarm')">/swarm</button>
+                <button class="preset-btn" onclick="runPreset('/system')">/system</button>
+                <button class="preset-btn" onclick="runPreset('/logs')">/logs</button>
+                <button class="preset-btn" onclick="runPreset('/clear')">Clear CLI</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local AI Cognitive Estimator (Calibration / Hardware Specs Calculator) -->
+    <section class="estimator-section" id="estimator">
+        <div class="section-header scroll-reveal fade-up">
+            <h2>Local Cognitive Core Calibrator</h2>
+            <p>Slide parameters to estimate memory resource limits, tokens/sec execution speed, and hardware specifications.</p>
+        </div>
+        <div class="estimator-container scroll-reveal scale-in">
+            <div class="estimator-grid">
+                <!-- Left Panel: The sliders and selection -->
+                <div class="estimator-controls">
+                    <h3>Model Optimization Calibration</h3>
+                    <p class="description">Select the model size to calculate expected runtime specs on standard Windows hardware.</p>
+                    
+                    <div class="param-selector">
+                        <label>Active Parameter Model Scale: <span id="param-val" class="highlight">3B (Default)</span></label>
+                        <div class="slider-container">
+                            <input type="range" id="param-slider" min="1" max="5" value="2" class="estimator-slider" oninput="updateEstimator()">
+                            <div class="slider-ticks">
+                                <span>1.5B</span>
+                                <span>3B</span>
+                                <span>7B</span>
+                                <span>13B</span>
+                                <span>20B</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hardware-tier-badge">
+                        <span>Target Engine:</span>
+                        <div class="tier-badge" id="estimator-tier">CORE NODE</div>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <button type="button" class="btn btn-outline" style="width: 100%; border-color: var(--accent-2); color: var(--accent-2); font-size: 0.85rem; padding: 10px 20px;" onclick="runCalibrationBenchmark()">⚡ RUN SYSTEM BENCHMARK SIMULATION</button>
+                    </div>
+                </div>
+                
+                <!-- Right Panel: Visual Readout Gauges -->
+                <div class="estimator-readouts" style="position: relative;">
+                    <!-- Benchmark terminal console output (initially hidden) -->
+                    <div id="benchmark-terminal" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #050811; border: 1px solid var(--accent); border-radius: 10px; padding: 25px; font-family: 'Consolas', monospace; font-size: 0.85rem; color: #10b981; overflow-y: auto; z-index: 10; box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);">
+                        <div style="color: var(--accent); font-weight: bold; border-bottom: 1px solid rgba(0,229,255,0.15); padding-bottom: 8px; margin-bottom: 12px; display: flex; justify-content: space-between;">
+                            <span>WORKSTATION BENCHMARK CORE v1.0</span>
+                            <span class="pulse-dot" style="width: 8px; height: 8px; background: #ef4444; border-radius: 50%; display: inline-block;"></span>
+                        </div>
+                        <div id="benchmark-log" style="display: flex; flex-direction: column; gap: 6px; line-height: 1.4;">
+                            <!-- Will be populated dynamically -->
+                        </div>
+                    </div>
+                    <div class="gauge-card">
+                        <div class="gauge-info">
+                            <span class="label">Estimated Memory Consumption</span>
+                            <span class="value" id="est-ram">~2.2 GB VRAM</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="ram-progress" style="width: 20%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="gauge-card">
+                        <div class="gauge-info">
+                            <span class="label">Cognitive Execution Speed</span>
+                            <span class="value" id="est-speed">48 tok/sec</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill speed" id="speed-progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="gauge-card">
+                        <div class="gauge-info">
+                            <span class="label">Intelligence & Coding Competence</span>
+                            <span class="value" id="est-intelligence">78%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill intelligence" id="intelligence-progress" style="width: 65%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="hardware-recommendation">
+                        <div class="recommendation-header">🔌 Recommended Host Setup</div>
+                        <div class="recommendation-text" id="est-hardware">Intel Iris Xe / AMD Radeon Integrated Graphics (Minimum 8GB RAM)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Packages -->
+    <section class="pricing-section" id="pricing">
+        <div class="section-header scroll-reveal fade-up">
+            <h2>Select Deployment Package</h2>
+            <p>Configure your J.A.R.V.I.S. node. Lifetime licensing options with secure payment protocols.</p>
+            <div class="billing-toggle">
+                <span class="toggle-label active" id="billing-monthly-lbl">Monthly Billing</span>
+                <label class="switch">
+                    <input type="checkbox" id="billing-checkbox" onchange="toggleBilling()">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggle-label" id="billing-annual-lbl">Annual Billing <span class="discount-badge">Save 20%</span></span>
+            </div>
+        </div>
+        <div class="pricing-grid">
+            <!-- Core Node -->
+            <div class="price-card scroll-reveal slide-left scroll-3d">
+                <div class="price-tier">CORE NODE</div>
+                <div class="price-value"><span class="price-currency">$</span><span class="price-num" id="core-price">0</span><span class="price-period" id="core-period">/mo</span></div>
+                <p class="price-desc">Standard local command routing and basic memory indexing.</p>
+                <ul class="price-features">
+                    <li>✔ Offline voice matrix & speaker</li>
+                    <li>✔ Standard vector memory database</li>
+                    <li>✔ Sandbox venv code execution</li>
+                    <li>✔ restricted loopback host binding</li>
+                </ul>
+                <button class="price-btn" onclick="openCheckout('Core Node')">Get Core Node</button>
+            </div>
+            <!-- God-Mode Pro -->
+            <div class="price-card recommended scroll-reveal scale-in scroll-3d">
+                <div class="card-badge">POPULAR</div>
+                <div class="price-tier">GOD-MODE PRO</div>
+                <div class="price-value"><span class="price-currency">$</span><span class="price-num" id="pro-price">19</span><span class="price-period" id="pro-period">/mo</span></div>
+                <p class="price-desc">Full cognitive autonomy, multi-agent swarms, and remote telemetries.</p>
+                <ul class="price-features">
+                    <li>✔ **Everything in Core Node**</li>
+                    <li>✔ **Self-Healing Multi-Agent Swarms**</li>
+                    <li>✔ **Modular Office Suite (Word, Excel, PDF)**</li>
+                    <li>✔ **Overwatch Remote Admin & Tunnels**</li>
+                    <li>✔ Background Chronos daemon loops</li>
+                    <li>✔ Mobile Uplink integration (ngrok)</li>
+                </ul>
+                <button class="price-btn btn-glowing" onclick="openCheckout('God-Mode Pro')">Deploy God-Mode</button>
+            </div>
+            <!-- Enterprise Grid -->
+            <div class="price-card scroll-reveal slide-right scroll-3d">
+                <div class="price-tier">ENTERPRISE GRID</div>
+                <div class="price-value"><span class="price-num">Custom</span></div>
+                <p class="price-desc">Scale systems across multiple cluster locations with SLA priority support.</p>
+                <ul class="price-features">
+                    <li>✔ **Everything in God-Mode Pro**</li>
+                    <li>✔ Dedicated multi-node sync tunnels</li>
+                    <li>✔ Local Custom LLM fine-tuning</li>
+                    <li>✔ 24/7 Priority SLA engineering support</li>
+                    <li>✔ Enterprise directory indexers</li>
+                </ul>
+                <button class="price-btn" onclick="openCheckout('Enterprise Grid')">Contact Engineering</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Packages Comparison Grid -->
+    <section class="comparison-section">
+        <div class="section-header scroll-reveal fade-up">
+            <h2>Detailed Capability Matrix</h2>
+            <p>Compare the precise modules included in each J.A.R.V.I.S. package.</p>
+        </div>
+        <div class="comparison-table-wrapper scroll-reveal scale-in">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Core Module</th>
+                        <th>Core Node</th>
+                        <th>God-Mode Pro</th>
+                        <th>Enterprise Grid</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="module-title">Offline Voice (pyaudio + openwakeword)</td>
+                        <td class="included">🟢 Basic</td>
+                        <td class="included">🟢 Advanced (High-Fidelity)</td>
+                        <td class="included">🟢 Advanced (Multi-Mic Array)</td>
+                    </tr>
+                    <tr>
+                        <td class="module-title">Semantic Database (nomic-embed-text)</td>
+                        <td class="included">🟢 SQLite3 Store</td>
+                        <td class="included">🟢 Indexed Vector Search</td>
+                        <td class="included">🟢 Distributed Vector Cluster</td>
+                    </tr>
+                    <tr>
+                        <td class="module-title">Multi-Agent Swarm (swarm_coordinator)</td>
+                        <td class="not-included">🔴 No</td>
+                        <td class="included">🟢 Unlimited Background Swarms</td>
+                        <td class="included">🟢 Custom Swarm Orchestration</td>
+                    </tr>
+                    <tr>
+                        <td class="module-title">Built-In Office Suite (systems/office)</td>
+                        <td class="not-included">🔴 No</td>
+                        <td class="included">🟢 Word, Excel, PDF Editors</td>
+                        <td class="included">🟢 Custom document integrations</td>
+                    </tr>
+                    <tr>
+                        <td class="module-title">Overwatch Telemetry (overwatch_service)</td>
+                        <td class="not-included">🔴 No</td>
+                        <td class="included">🟢 Telemetry loops & Remote CMD</td>
+                        <td class="included">🟢 Dedicated cloud dashboard logs</td>
+                    </tr>
+                    <tr>
+                        <td class="module-title">Remote Tunnel Access (ngrok)</td>
+                        <td class="not-included">🔴 No</td>
+                        <td class="included">🟢 Handshake & PIN Mobile Sync</td>
+                        <td class="included">🟢 Dedicated multi-node sync tunnels</td>
+                    </tr>
+                    <tr>
+                        <td class="module-title">Custom LLM Fine-Tuning</td>
+                        <td class="not-included">🔴 No</td>
+                        <td class="not-included">🔴 No</td>
+                        <td class="included">🟢 Full Local Calibration</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo"><span class="logo-accent">◆</span> J.A.R.V.I.S. COGNITIVE NETWORK</div>
+            <p>Secure Command Matrix for Windows Platforms. Powered by local LLMs.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Framework</a>
+                <a href="#">Deployment Terms</a>
+                <a href="#">Repository</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Stripe/PayPal Checkout Modal Overlay -->
+    <div class="checkout-overlay" id="checkout-modal">
+        <div class="checkout-card">
+            <button class="close-btn" onclick="closeCheckout()">×</button>
+            <div class="checkout-grid">
+                <!-- Left panel: Order Summary -->
+                <div class="checkout-summary">
+                    <h3>Uplink Staging</h3>
+                    <div class="selected-plan" id="selected-plan-name">God-Mode Pro</div>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Base Deployment</span>
+                            <span id="summary-subtotal">$19.00</span>
+                        </div>
+                        <div class="summary-row discount" id="summary-discount-row" style="display:none;">
+                            <span>Annual Discount (20%)</span>
+                            <span id="summary-discount">-$3.80</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Dynamic Total</span>
+                            <span id="summary-total">$19.00</span>
+                        </div>
+                    </div>
+                    <div class="deployment-notice">
+                        ⚡ Your unique license key and deployment package will be provisioned instantly upon network authorization.
+                    </div>
+                </div>
+                <!-- Right panel: Payment methods -->
+                <div class="checkout-payment">
+                    <div class="payment-mode-header-row">
+                        <h3>Select Payment Method</h3>
+                        <!-- Gateway Mode Badge (Live / Sandbox) -->
+                        <span class="payment-mode-badge" id="pay-mode-badge">🔒 SANDBOX ACTIVE</span>
+                    </div>
+                    <div class="payment-tabs">
+                        <button type="button" class="pay-tab active" id="btn-tab-card" onclick="switchPayTab('card')">Credit Card</button>
+                        <button type="button" class="pay-tab" id="btn-tab-paypal" onclick="switchPayTab('paypal')">PayPal</button>
+                    </div>
+
+                    <!-- Card Form -->
+                    <form id="payment-form" onsubmit="processPayment(event)">
+                        <!-- Global Customer Email -->
+                        <div class="input-group" style="margin-bottom: 20px;">
+                            <label for="checkout-email">Destination Email Address</label>
+                            <input type="email" id="checkout-email" placeholder="tony@stark.com" required>
+                            <span style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">◆ Your unique license key and welcome update zip will be emailed here.</span>
+                        </div>
+
+                        <!-- Dynamic Stripe Elements input container mount -->
+                        <div id="stripe-card-mount" style="display:none; margin-bottom: 20px; border: 1px solid var(--border-color); padding: 12px; border-radius: 6px; background: #05070e;"></div>
+
+                        <!-- Static Sandbox Card Fields -->
+                        <div id="payment-card-section">
+                            <div class="input-group">
+                                <label for="card-name">Cardholder Name</label>
+                                <input type="text" id="card-name" placeholder="John Doe" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="card-number">Card Number</label>
+                                <div class="card-input-wrapper">
+                                    <input type="text" id="card-number" placeholder="4242 4242 4242 4242" maxlength="19" required oninput="formatCardNumber(this)">
+                                </div>
+                            </div>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="card-expiry">Expiration</label>
+                                    <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" required oninput="formatExpiry(this)">
+                                </div>
+                                <div class="input-group">
+                                    <label for="card-cvc">CVC</label>
+                                    <input type="password" id="card-cvc" placeholder="•••" maxlength="3" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PayPal Button Section -->
+                        <div id="payment-paypal-section" style="display:none;">
+                            <div id="paypal-button-container" style="display:none; min-height: 50px;"></div>
+                            <div class="paypal-mock-btn" id="paypal-mock-btn">
+                                <span class="paypal-text"><span class="blue">Pay</span><span class="gold">Pal</span></span> Checkout
+                            </div>
+                            <p style="font-size: 11px; color: gray; text-align: center; margin-top: 10px;">
+                                Tapping the button redirects to the secure PayPal authentication gateway.
+                            </p>
+                        </div>
+
+                        <button type="submit" class="checkout-submit-btn" id="pay-submit-btn">Authorize Node Connection</button>
+                    </form>
+
+                    <!-- Accordions for Payment Routing & Sandbox testing instructions -->
+                    <div class="checkout-accordions">
+                        <div class="checkout-accordion">
+                            <button type="button" class="accordion-trigger" onclick="toggleAccordion('routing-acc')">
+                                <span>◆ PAYMENT ROUTING SPECIFICATION</span>
+                                <span class="arrow">▼</span>
+                            </button>
+                            <div class="accordion-content" id="routing-acc">
+                                <p><strong>Where does the money go?</strong></p>
+                                <ul>
+                                    <li><strong>Sandbox Mode (Active)</strong>: Simulated internally in Javascript. No charges are processed and no money moves. Excellent for local testing.</li>
+                                    <li><strong>Live Production</strong>: Configured via <code>gateway_config.json</code> in the project directory. Enter your publishable credentials, toggle <code>"mode": "production"</code>, and authorized client sweeps route directly to your merchant account balance.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="checkout-accordion">
+                            <button type="button" class="accordion-trigger" onclick="toggleAccordion('sandbox-acc')">
+                                <span>◆ SANDBOX TEST SUITE GUIDE</span>
+                                <span class="arrow">▼</span>
+                            </button>
+                            <div class="accordion-content" id="sandbox-acc">
+                                <p>To test client authorization hooks, use these mock gateway credentials:</p>
+                                <table class="test-table">
+                                    <tr>
+                                        <th>Card Number</th>
+                                        <td><code>4242 4242 4242 4242</code> (Stripe standard)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Expiry Date</th>
+                                        <td>Any future date (e.g. <code>12/29</code>)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>CVC / CVV</th>
+                                        <td>Any 3 digits (e.g. <code>123</code>)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>PayPal Path</th>
+                                        <td>Click checkout to trigger a simulated token authorization.</td>
+                                    </tr>
+                                </table>
+                                <button type="button" class="btn-micro" onclick="autofillTestCard()">Auto-fill Test Card</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Processing overlay inside modal -->
+                    <div class="processing-state" id="processing-overlay">
+                        <div class="loader"></div>
+                        <h4 id="processing-step">Connecting to Payment Gateway...</h4>
+                        <p>Do not reload or close this frame.</p>
+                    </div>
+
+                    <!-- Success State inside modal -->
+                    <div class="success-state" id="success-overlay">
+                        <span class="success-icon">✓</span>
+                        <h3>UPLINK AUTHORIZED</h3>
+                        <p>Payment approved successfully. Your node is now registered in the global matrix.</p>
+                        <p id="success-email-notice" style="color: var(--accent); font-size: 0.85rem; margin-top: -5px; margin-bottom: 20px; font-weight: bold; min-height: 1.2rem;"></p>
+                        <div class="license-box">
+                            <span class="license-label">LICENSE KEY</span>
+                            <span class="license-key" id="provisioned-license-key">JVS-8A7B-9D2E-6C4F</span>
+                        </div>
+                        <div class="qr-box">
+                            <!-- Simulated QR code -->
+                            <div class="mock-qr">
+                                <div class="qr-block bg"></div>
+                                <div class="qr-block inner"></div>
+                                <div class="qr-pulse"></div>
+                            </div>
+                            <span>Scan to Link Mobile App</span>
+                        </div>
+                        <button class="price-btn" onclick="closeCheckout()">Close Uplink Panel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main javascript logic -->
+    <script src="app.js"></script>
+</body>
+</html>
