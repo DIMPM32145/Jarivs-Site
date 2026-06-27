@@ -358,7 +358,7 @@ const processingOverlay = document.getElementById('processing-overlay');
 const processingStep = document.getElementById('processing-step');
 const successOverlay = document.getElementById('success-overlay');
 
-let currentActivePlan = 'God-Mode Pro';
+let currentActivePlan = 'Pro Edition';
 
 // Gateway Configurations State
 let gatewayConfig = {
@@ -481,7 +481,7 @@ function setupPayPalButtons() {
         
         window.paypal.Buttons({
             createOrder: function(data, actions) {
-                let basePrice = currentActivePlan === 'God-Mode Pro' ? 19 : 0;
+                let basePrice = currentActivePlan === 'Pro Edition' ? 19 : 0;
                 let finalPrice = basePrice;
                 if (isAnnual) {
                     finalPrice = (basePrice * 12) * 0.8;
@@ -533,8 +533,8 @@ function openCheckout(planName) {
     
     // Calculate values
     let basePrice = 0;
-    if (planName === 'God-Mode Pro') basePrice = 19;
-    else if (planName === 'Core Node') basePrice = 0;
+    if (planName === 'Pro Edition') basePrice = 19;
+    else if (planName === 'Free Edition') basePrice = 0;
     
     if (isAnnual) {
         let subVal = basePrice * 12;
@@ -651,7 +651,7 @@ function showSuccessScreen() {
     for (let i = 0; i < 2; i++) {
         keyParts.push(Math.random().toString(36).substring(2, 6).toUpperCase());
     }
-    const prefix = (currentActivePlan === 'God-Mode Pro') ? 'PRO' : 'FREE';
+    const prefix = (currentActivePlan === 'Pro Edition') ? 'PRO' : 'FREE';
     const generatedKey = `JVS-${prefix}-${keyParts.join('-')}`;
     document.getElementById('provisioned-license-key').textContent = generatedKey;
     
@@ -785,7 +785,7 @@ function updateEstimator() {
     switch (val) {
         case 1:
             modelScale = "1.5B (Tiny)";
-            tier = "CORE NODE";
+            tier = "FREE EDITION";
             ramText = "~1.1 GB VRAM";
             speedText = "72 tok/sec";
             intelText = "62%";
@@ -796,7 +796,7 @@ function updateEstimator() {
             break;
         case 2:
             modelScale = "3B (Default)";
-            tier = "CORE NODE";
+            tier = "FREE EDITION";
             ramText = "~2.2 GB VRAM";
             speedText = "48 tok/sec";
             intelText = "78%";
@@ -807,7 +807,7 @@ function updateEstimator() {
             break;
         case 3:
             modelScale = "7B (Pro)";
-            tier = "GOD-MODE PRO";
+            tier = "PRO EDITION";
             ramText = "~5.1 GB VRAM";
             speedText = "28 tok/sec";
             intelText = "89%";
@@ -818,7 +818,7 @@ function updateEstimator() {
             break;
         case 4:
             modelScale = "13B (Elite)";
-            tier = "GOD-MODE PRO";
+            tier = "PRO EDITION";
             ramText = "~9.8 GB VRAM";
             speedText = "18 tok/sec";
             intelText = "94%";
@@ -852,11 +852,11 @@ function updateEstimator() {
     if (intelFill) intelFill.style.width = `${intelPct}%`;
     
     if (estTier) {
-        if (tier === "CORE NODE") {
+        if (tier === "FREE EDITION") {
             estTier.style.background = "rgba(0, 229, 255, 0.15)";
             estTier.style.color = "var(--accent)";
             estTier.style.borderColor = "var(--accent)";
-        } else if (tier === "GOD-MODE PRO") {
+        } else if (tier === "PRO EDITION") {
             estTier.style.background = "rgba(245, 158, 11, 0.15)";
             estTier.style.color = "var(--accent-2)";
             estTier.style.borderColor = "var(--accent-2)";
@@ -1123,7 +1123,7 @@ function runCalibrationBenchmark() {
         await logLine("Running FP16 matrix multiplier validation tests...", 450);
         await logLine("Testing batch size latency: 1.45 ms/token", 300);
         await logLine("Speed estimation: 28 tokens/sec calculated on 7B parameters", 300);
-        await logLine("Node Capability Level: GOD-MODE PRO COMPATIBLE", 300);
+        await logLine("Node Capability Level: PRO EDITION COMPATIBLE", 300);
         await logLine("Finalizing calibration configurations...", 200);
         
         setTimeout(() => {
