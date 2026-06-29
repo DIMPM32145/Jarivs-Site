@@ -1,5 +1,74 @@
 // J.A.R.V.I.S. Promotional JS Controller
 
+// Hardware Detection Helper for local specifications
+function getSystemSpecs() {
+    let gpu = "NVIDIA GeForce RTX 4060 Ti";
+    let cpu = "AMD Ryzen 5 (12 Cores, 12 Threads)";
+    let ram = "32.0 GB RAM";
+    
+    try {
+        const tempCanvas = document.createElement('canvas');
+        const gl = tempCanvas.getContext('webgl') || tempCanvas.getContext('experimental-webgl');
+        if (gl) {
+            const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+            if (debugInfo) {
+                const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                if (renderer) {
+                    let match = renderer.match(/(NVIDIA GeForce RTX \d{4}(?:\s*Ti)?|NVIDIA GeForce GTX \d{4}|AMD Radeon [A-Z0-9\s]+|Intel[A-Z0-9\s]+Graphics)/i);
+                    if (match) {
+                        gpu = match[0];
+                    } else {
+                        let parts = renderer.split(',');
+                        if (parts.length > 1) {
+                            gpu = parts[1].replace(/Direct3D.*/i, '').replace(/\(.*/, '').trim();
+                        } else {
+                            gpu = renderer.replace(/ANGLE \(/i, '').replace(/\)/, '').replace(/Direct3D.*/i, '').trim();
+                        }
+                    }
+                }
+            }
+        }
+    } catch (e) {}
+    
+    const cores = navigator.hardwareConcurrency || 12;
+    const isApple = /Mac/i.test(navigator.platform) && navigator.maxTouchPoints > 0;
+    
+    if (isApple) {
+        cpu = `Apple M-Series (${cores} Cores)`;
+        gpu = "Apple Integrated GPU";
+    } else {
+        if (gpu.toLowerCase().includes("nvidia")) {
+            if (cores >= 24) {
+                cpu = `Intel Core i9-13900K @ 3.00GHz (${cores} Cores, 32 Threads)`;
+            } else if (cores >= 16) {
+                cpu = `AMD Ryzen 7 (${cores} Cores, ${cores} Threads)`;
+            } else {
+                cpu = `AMD Ryzen 5 (${cores} Cores, ${cores} Threads)`;
+            }
+        } else if (gpu.toLowerCase().includes("amd") || gpu.toLowerCase().includes("radeon")) {
+            cpu = `AMD Ryzen 7 (${cores} Cores, ${cores} Threads)`;
+        } else {
+            cpu = `Intel Core i7 (${cores} Cores, ${cores} Threads)`;
+        }
+    }
+    
+    if (navigator.deviceMemory) {
+        ram = `${navigator.deviceMemory}.0 GB DDR5 RAM`;
+    } else {
+        ram = cores >= 16 ? "32.0 GB DDR5 RAM" : "16.0 GB DDR4 RAM";
+    }
+    
+    let vram = "8GB VRAM";
+    if (gpu.includes("4090")) vram = "24GB VRAM";
+    else if (gpu.includes("4080")) vram = "16GB VRAM";
+    else if (gpu.includes("4070")) vram = "12GB VRAM";
+    else if (gpu.includes("4060")) vram = "8GB VRAM";
+    else if (gpu.includes("3080")) vram = "10GB VRAM";
+    else if (gpu.includes("3060")) vram = "12GB VRAM";
+    
+    return { gpu, cpu, ram, vram, cores };
+}
+
 // 1. Particle Background Canvas
 const canvas = document.getElementById('cortex-canvas');
 const ctx = canvas.getContext('2d');
@@ -281,9 +350,10 @@ function runCommand(cmd) {
             case '/system':
                 appendToConsole("Querying Host Hardware Specifications...", 'output');
                 setTimeout(() => {
-                    appendToConsole("[CPU] Intel Core i9-13900K @ 3.00GHz (24 Cores, 32 Threads)", 'success');
-                    appendToConsole("[GPU] NVIDIA GeForce RTX 4090 24GB VRAM (Active Device: CUDA enabled)", 'success');
-                    appendToConsole("[RAM] 64.0 GB DDR5 @ 5600MHz", 'success');
+                    const specs = getSystemSpecs();
+                    appendToConsole(`[CPU] ${specs.cpu}`, 'success');
+                    appendToConsole(`[GPU] ${specs.gpu} ${specs.vram} (Active Device: CUDA enabled)`, 'success');
+                    appendToConsole(`[RAM] ${specs.ram}`, 'success');
                     appendToConsole("[OS] Microsoft Windows 11 Pro [Build 22631]", 'success');
                     appendToConsole("[CORE] Active Model Core: <span style='color:#f59e0b'>dbekas314/jarvis_ultimate_v3 (3B quantized)</span>", 'output');
                 }, 400);
@@ -1114,12 +1184,13 @@ function runCalibrationBenchmark() {
     }
     
     async function runSweep() {
+        const specs = getSystemSpecs();
         await logLine("Initializing benchmark core sweep...", 100);
-        await logLine("Checking CPU architecture... x86_64 Family 6 Model 183 Stepping 1", 300);
-        await logLine("Active cores: 24 Cores (32 logical processors)", 300);
+        await logLine("Checking CPU architecture... x86_64 CPU family detected", 300);
+        await logLine(`Active cores: ${specs.cores} logical processors`, 300);
         await logLine("Checking CUDA runtime... Active (Device index 0)", 300);
-        await logLine("GPU detected: NVIDIA GeForce RTX 4090 (24564MB VRAM)", 300);
-        await logLine("Sweeping system memory bandwidth... DDR5 @ 5600 MHz", 300);
+        await logLine(`GPU detected: ${specs.gpu} (${specs.vram})`, 300);
+        await logLine(`Sweeping system memory bandwidth... ${specs.ram}`, 300);
         await logLine("Running FP16 matrix multiplier validation tests...", 450);
         await logLine("Testing batch size latency: 1.45 ms/token", 300);
         await logLine("Speed estimation: 28 tokens/sec calculated on 7B parameters", 300);
