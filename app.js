@@ -707,6 +707,7 @@ function showSuccessScreen() {
     // Register payment on backend cloud server (if active)
     const urlParams = new URLSearchParams(window.location.search);
     const emailFromUrl = urlParams.get('email');
+    const sessionIdFromUrl = urlParams.get('session_id');
     const emailInput = document.getElementById('checkout-email');
     
     let emailVal = "dbekas314@gmail.com";
@@ -728,6 +729,7 @@ function showSuccessScreen() {
         },
         body: JSON.stringify({
             email: emailVal,
+            session_id: sessionIdFromUrl || "",
             plan_name: currentActivePlan,
             license_key: generatedKey
         })
