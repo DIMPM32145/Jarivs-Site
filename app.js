@@ -1568,5 +1568,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load checkout gateway config
     loadGatewayConfig();
+
+    // Check if redirecting from a successful Stripe Payment
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('status') === 'success') {
+        currentActivePlan = 'Pro Edition';
+        setTimeout(() => {
+            showSuccessScreen();
+            
+            // Clean up the URL search parameters so refreshing doesn't show the popup again
+            const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            window.history.replaceState({path: cleanUrl}, '', cleanUrl);
+        }, 1200);
+    }
 });
 
