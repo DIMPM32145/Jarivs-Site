@@ -705,8 +705,16 @@ function showSuccessScreen() {
     }
     
     // Register payment on backend cloud server (if active)
+    const urlParams = new URLSearchParams(window.location.search);
+    const emailFromUrl = urlParams.get('email');
     const emailInput = document.getElementById('checkout-email');
-    const emailVal = (emailInput && emailInput.value.trim()) ? emailInput.value.trim() : "dbekas314@gmail.com";
+    
+    let emailVal = "dbekas314@gmail.com";
+    if (emailFromUrl && emailFromUrl.trim()) {
+        emailVal = emailFromUrl.trim();
+    } else if (emailInput && emailInput.value.trim()) {
+        emailVal = emailInput.value.trim();
+    }
     const emailNotice = document.getElementById('success-email-notice');
     if (emailNotice) {
         emailNotice.textContent = "Establishing uplink and scheduling activation email...";
