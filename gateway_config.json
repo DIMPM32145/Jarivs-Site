@@ -5,7 +5,7 @@
   "smtp_host": "smtp.gmail.com",
   "smtp_port": 587,
   "smtp_user": "dbekas314@gmail.com",
-  "smtp_password": "mccmeuqlbsubyaud",
+  "smtp_password": "fsrzvfqsfcrgejkh",
   "smtp_from": "dbekas314@gmail.com",
   "instructions": "To go live: 1. Set mode to 'production'. 2. Add Stripe/PayPal keys. 3. Configure SMTP credentials (smtp_host, smtp_user, smtp_password) to send real welcome emails upon checkout completion."
 }
