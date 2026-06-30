@@ -1604,6 +1604,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('status') === 'success') {
         currentActivePlan = 'Pro Edition';
+        
+        // Dynamically update the summary pricing elements to show Pro Edition pricing
+        const subtotalEl = document.getElementById('summary-subtotal');
+        const totalEl = document.getElementById('summary-total');
+        if (subtotalEl) subtotalEl.textContent = "$49.00";
+        if (totalEl) totalEl.textContent = "$49.00";
+        
         // Retrieve dynamically to prevent null errors on early load
         const modalEl = document.getElementById('checkout-modal');
         if (modalEl) {
