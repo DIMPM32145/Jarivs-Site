@@ -705,7 +705,8 @@ function showSuccessScreen() {
     }
     
     // Register payment on backend cloud server (if active)
-    const emailVal = document.getElementById('checkout-email') ? document.getElementById('checkout-email').value : "test@example.com";
+    const emailInput = document.getElementById('checkout-email');
+    const emailVal = (emailInput && emailInput.value.trim()) ? emailInput.value.trim() : "dbekas314@gmail.com";
     const emailNotice = document.getElementById('success-email-notice');
     if (emailNotice) {
         emailNotice.textContent = "Establishing uplink and scheduling activation email...";
