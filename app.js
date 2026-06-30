@@ -1581,6 +1581,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('status') === 'success') {
         currentActivePlan = 'Pro Edition';
+        // Make sure the main checkout modal is visible first
+        checkoutModal.classList.add('active');
+        
         setTimeout(() => {
             showSuccessScreen();
             
