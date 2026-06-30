@@ -380,34 +380,11 @@ function runCommand(cmd) {
 let isAnnual = false;
 
 function toggleBilling() {
-    isAnnual = document.getElementById('billing-checkbox').checked;
-    
-    const monthlyLbl = document.getElementById('billing-monthly-lbl');
-    const annualLbl = document.getElementById('billing-annual-lbl');
-    
-    if (isAnnual) {
-        monthlyLbl.classList.remove('active');
-        annualLbl.classList.add('active');
-    } else {
-        monthlyLbl.classList.add('active');
-        annualLbl.classList.remove('active');
-    }
-    
-    updatePricingCards();
+    // No-op: Billing toggle removed in favor of lifetime licensing.
 }
 
 function updatePricingCards() {
-    const proPrice = document.getElementById('pro-price');
-    const proPeriod = document.getElementById('pro-period');
-    
-    if (isAnnual) {
-        // 19/mo becomes 15/mo billed annually
-        proPrice.textContent = '15';
-        proPeriod.textContent = '/mo billed annually';
-    } else {
-        proPrice.textContent = '19';
-        proPeriod.textContent = '/mo';
-    }
+    // No-op: Fixed lifetime price.
 }
 
 
@@ -551,11 +528,8 @@ function setupPayPalButtons() {
         
         window.paypal.Buttons({
             createOrder: function(data, actions) {
-                let basePrice = currentActivePlan === 'Pro Edition' ? 19 : 0;
+                let basePrice = currentActivePlan === 'Pro Edition' ? 49 : 0;
                 let finalPrice = basePrice;
-                if (isAnnual) {
-                    finalPrice = (basePrice * 12) * 0.8;
-                }
                 return actions.order.create({
                     purchase_units: [{
                         description: `J.A.R.V.I.S. ${currentActivePlan} License`,
@@ -603,23 +577,12 @@ function openCheckout(planName) {
     
     // Calculate values
     let basePrice = 0;
-    if (planName === 'Pro Edition') basePrice = 19;
+    if (planName === 'Pro Edition') basePrice = 49;
     else if (planName === 'Free Edition') basePrice = 0;
     
-    if (isAnnual) {
-        let subVal = basePrice * 12;
-        let discVal = subVal * 0.2;
-        let totVal = subVal - discVal;
-        
-        summarySubtotal.textContent = `$${subVal.toFixed(2)}`;
-        summaryDiscountRow.style.display = 'flex';
-        summaryDiscount.textContent = `-$${discVal.toFixed(2)}`;
-        summaryTotal.textContent = `$${totVal.toFixed(2)}`;
-    } else {
-        summarySubtotal.textContent = `$${basePrice.toFixed(2)}`;
-        summaryDiscountRow.style.display = 'none';
-        summaryTotal.textContent = `$${basePrice.toFixed(2)}`;
-    }
+    summarySubtotal.textContent = `$${basePrice.toFixed(2)}`;
+    summaryDiscountRow.style.display = 'none';
+    summaryTotal.textContent = `$${basePrice.toFixed(2)}`;
     
     checkoutModal.classList.add('active');
 }
