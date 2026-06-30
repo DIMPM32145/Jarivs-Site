@@ -678,7 +678,10 @@ function runSimulatedTransactionSteps(steps, startIdx) {
 }
 
 function showSuccessScreen() {
-    processingOverlay.classList.remove('active');
+    const procOverlay = document.getElementById('processing-overlay');
+    if (procOverlay) {
+        procOverlay.classList.remove('active');
+    }
     
     let generatedKey = '';
     const keyParts = [];
@@ -741,7 +744,10 @@ function showSuccessScreen() {
         }
     });
     
-    successOverlay.classList.add('active');
+    const succOverlay = document.getElementById('success-overlay');
+    if (succOverlay) {
+        succOverlay.classList.add('active');
+    }
 }
 
 // Collapsible accordion controller
@@ -1581,8 +1587,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('status') === 'success') {
         currentActivePlan = 'Pro Edition';
-        // Make sure the main checkout modal is visible first
-        checkoutModal.classList.add('active');
+        // Retrieve dynamically to prevent null errors on early load
+        const modalEl = document.getElementById('checkout-modal');
+        if (modalEl) {
+            modalEl.classList.add('active');
+        }
         
         setTimeout(() => {
             showSuccessScreen();
