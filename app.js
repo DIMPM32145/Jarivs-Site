@@ -680,16 +680,19 @@ function runSimulatedTransactionSteps(steps, startIdx) {
 function showSuccessScreen() {
     processingOverlay.classList.remove('active');
     
+    let generatedKey = '';
+    const keyParts = [];
+    for (let i = 0; i < 2; i++) {
+        keyParts.push(Math.random().toString(36).substring(2, 6).toUpperCase());
+    }
+    
     if (currentActivePlan === 'Pro Edition') {
+        generatedKey = `JVS-PRO-${keyParts.join('-')}`;
         document.getElementById('provisioned-license-key').textContent = "SENT TO EMAIL (CHECK INBOX)";
         document.getElementById('provisioned-license-key').style.fontSize = "0.85rem";
         document.getElementById('provisioned-license-key').style.letterSpacing = "0.5px";
     } else {
-        const keyParts = [];
-        for (let i = 0; i < 2; i++) {
-            keyParts.push(Math.random().toString(36).substring(2, 6).toUpperCase());
-        }
-        const generatedKey = `JVS-FREE-${keyParts.join('-')}`;
+        generatedKey = `JVS-FREE-${keyParts.join('-')}`;
         document.getElementById('provisioned-license-key').textContent = generatedKey;
     }
     
