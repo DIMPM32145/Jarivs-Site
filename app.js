@@ -564,7 +564,7 @@ function openCheckout(planName) {
     }
     
     if (planName === 'Pro Edition') {
-        window.location.href = "https://buy.stripe.com/00wfZg10T7Wib5Ncyb9fW00";
+        window.location.href = "https://buy.stripe.com/4gM3cu5h9dgC0r9bu79fW01";
         return;
     }
     
