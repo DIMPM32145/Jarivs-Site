@@ -677,22 +677,22 @@
                         <div id="payment-card-section">
                             <div class="input-group">
                                 <label for="card-name">Cardholder Name</label>
-                                <input type="text" id="card-name" placeholder="John Doe" required>
+                                <input type="text" id="card-name" placeholder="John Doe">
                             </div>
                             <div class="input-group">
                                 <label for="card-number">Card Number</label>
                                 <div class="card-input-wrapper">
-                                    <input type="text" id="card-number" placeholder="4242 4242 4242 4242" maxlength="19" required oninput="formatCardNumber(this)">
+                                    <input type="text" id="card-number" placeholder="4242 4242 4242 4242" maxlength="19" oninput="formatCardNumber(this)">
                                 </div>
                             </div>
                             <div class="input-row">
                                 <div class="input-group">
                                     <label for="card-expiry">Expiration</label>
-                                    <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" required oninput="formatExpiry(this)">
+                                    <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)">
                                 </div>
                                 <div class="input-group">
                                     <label for="card-cvc">CVC</label>
-                                    <input type="password" id="card-cvc" placeholder="•••" maxlength="3" required>
+                                    <input type="password" id="card-cvc" placeholder="•••" maxlength="3">
                                 </div>
                             </div>
                         </div>
