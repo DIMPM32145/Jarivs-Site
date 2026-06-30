@@ -1,5 +1,5 @@
 {
-  "stripe_publishable_key": "pk_test_51Q303oCSD3HtiBILWM6NFgXl9aIuZRh2HbP9napKS7VJrYpVjK6Un4HkOdV3RQk89C6NJsu29DAdfo1QQ6K1SMnS00sbYCRvjL",
+  "stripe_publishable_key": "pk_live_51Q303oCSD3HtiBIL9WLPS3vFoEpnxX8FM3nlXZH6GV7Hhdz5wfXdfvdsbZXv0M8vCEY9geupD8ANWMkSQNnwKNBJ003nFoTZs2",
   "paypal_client_id": "",
   "mode": "production",
   "smtp_host": "smtp.gmail.com",

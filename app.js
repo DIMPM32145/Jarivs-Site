@@ -563,10 +563,6 @@ function openCheckout(planName) {
         return;
     }
     
-    // Temporarily disable payments and show Coming Soon message
-    alert("🚀 J.A.R.V.I.S. Node Allocation: Batch Limit Reached!\n\nDue to high server demand, we have temporarily paused new workspace provisions. The next deployment allocation is coming soon!\n\nPlease check back shortly.");
-    return;
-    
     currentActivePlan = planName;
     selectedPlanName.textContent = planName;
     
