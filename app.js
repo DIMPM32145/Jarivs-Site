@@ -712,7 +712,7 @@ function showSuccessScreen() {
         emailNotice.style.color = "var(--text-color)";
     }
     
-    fetch('http://127.0.0.1:8000/api/payment/success', {
+    fetch('https://aegis-assistant-project-j-a-r-v-i-s.onrender.com/api/payment/success', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
