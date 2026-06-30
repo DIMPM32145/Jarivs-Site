@@ -1,7 +1,7 @@
 {
   "stripe_publishable_key": "pk_test_51Q303oCSD3HtiBILWM6NFgXl9aIuZRh2HbP9napKS7VJrYpVjK6Un4HkOdV3RQk89C6NJsu29DAdfo1QQ6K1SMnS00sbYCRvjL",
   "paypal_client_id": "",
-  "mode": "sandbox",
+  "mode": "production",
   "smtp_host": "smtp.gmail.com",
   "smtp_port": 587,
   "smtp_user": "dbekas314@gmail.com",
