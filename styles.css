@@ -2651,6 +2651,139 @@ body::before {
     animation: scalePop 0.18s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
+/* --- Mobile Screen Optimization (600px and under) --- */
+@media (max-width: 600px) {
+    /* Navbar styling: hide links, align logo and deploy button */
+    .nav-links a {
+        display: none !important;
+    }
+    .nav-links {
+        gap: 0 !important;
+    }
+    .navbar-container {
+        padding: 0 10px;
+    }
+
+    /* Hero section adjustments */
+    .hero {
+        padding-top: 110px !important;
+        padding-bottom: 40px !important;
+    }
+    .hero h1 {
+        font-size: 2.1rem !important;
+        line-height: 1.25 !important;
+    }
+    .hero-subtitle {
+        font-size: 0.95rem !important;
+    }
+    .hero-actions {
+        flex-direction: column;
+        gap: 15px !important;
+        width: 100%;
+    }
+    .hero-actions .btn {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px !important;
+    }
+    .holo-core {
+        width: 180px !important;
+        height: 180px !important;
+    }
+    .ring-outer { width: 170px !important; height: 170px !important; }
+    .ring-mid { width: 130px !important; height: 130px !important; }
+    .ring-inner { width: 90px !important; height: 90px !important; }
+    .core-dot { width: 15px !important; height: 15px !important; }
+
+    /* Section Headers */
+    .section-header h2 {
+        font-size: 1.8rem !important;
+    }
+    .section-header p {
+        font-size: 0.9rem !important;
+    }
+
+    /* Pricing Section adjustments */
+    .pricing-section {
+        padding: 40px 15px !important;
+    }
+    .pricing-grid {
+        gap: 30px !important;
+    }
+    .price-card {
+        padding: 35px 20px !important; /* Reduce padding so content has room to render */
+    }
+    .price-tier {
+        font-size: 0.8rem !important;
+    }
+    .price-value {
+        font-size: 2.8rem !important;
+    }
+    .price-desc {
+        font-size: 0.85rem !important;
+    }
+    .price-features li {
+        font-size: 0.8rem !important;
+    }
+    .price-btn {
+        padding: 12px 20px !important;
+    }
+    
+    /* Center lifetime badge on mobile */
+    .billing-toggle .discount-badge {
+        font-size: 0.85rem !important;
+        padding: 8px 12px !important;
+        display: inline-block;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+    /* Checkout Modal responsiveness */
+    .checkout-card {
+        width: 95% !important;
+        margin: 20px auto !important;
+    }
+    .checkout-summary {
+        padding: 25px 15px !important;
+    }
+    .checkout-payment {
+        padding: 25px 15px !important;
+    }
+    .payment-tabs {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .pay-tab {
+        width: 100% !important;
+        text-align: center;
+    }
+    .payment-mode-header-row {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 8px;
+        margin-bottom: 15px !important;
+    }
+    .payment-mode-badge {
+        font-size: 0.7rem !important;
+        padding: 4px 8px !important;
+    }
+    .input-row {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+    .input-row .input-group {
+        width: 100% !important;
+    }
+    
+    /* Footer links spacing */
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 15px 20px !important;
+    }
+}
+
+
+
 
 
 
