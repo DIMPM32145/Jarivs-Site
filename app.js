@@ -743,8 +743,9 @@ function showSuccessScreen() {
     .then(data => {
         console.log("Successfully registered license on J.A.R.V.I.S. Cloud Server:", data);
         if (emailNotice) {
+            const finalEmail = data.email || emailVal;
             if (data.smtp_sent) {
-                emailNotice.textContent = `📧 Onboarding Welcome Email successfully sent to ${emailVal}!`;
+                emailNotice.textContent = `📧 Onboarding Welcome Email successfully sent to ${finalEmail}!`;
                 emailNotice.style.color = "#10b981"; // Success green
             } else {
                 emailNotice.textContent = `💾 SMTP Offline // Onboarding welcome email saved to inbox/${data.email_file}`;
