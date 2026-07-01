@@ -1245,6 +1245,15 @@ footer {
     pointer-events: auto;
 }
 
+/* Free Mode Overrides */
+.checkout-overlay.free-mode .payment-tabs,
+.checkout-overlay.free-mode .payment-mode-header-row,
+.checkout-overlay.free-mode #payment-card-section,
+.checkout-overlay.free-mode #stripe-card-mount,
+.checkout-overlay.free-mode #payment-paypal-section {
+    display: none !important;
+}
+
 .checkout-card {
     background: #0d111a;
     border: 1px solid var(--border-color);

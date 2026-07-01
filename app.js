@@ -600,10 +600,12 @@ function openCheckout(planName) {
     if (paymentCardSection) paymentCardSection.style.display = 'none';
     if (submitBtn) submitBtn.textContent = 'Get Free Workstation License';
     
+    checkoutModal.classList.add('free-mode');
     checkoutModal.classList.add('active');
 }
 
 function closeCheckout() {
+    checkoutModal.classList.remove('free-mode');
     checkoutModal.classList.remove('active');
 }
 
