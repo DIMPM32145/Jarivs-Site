@@ -725,7 +725,7 @@ function showSuccessScreen() {
     fetch('https://script.google.com/macros/s/AKfycbwAhxKyvx6eQ0a5Ybliowv8qpz0Otlnlz3zRtw6R1Wg4JwYutnz9dgqdf_ju6gzmpC0vQ/exec', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/plain'
         },
         body: JSON.stringify({
             email: emailVal,
