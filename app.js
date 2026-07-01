@@ -589,6 +589,17 @@ function openCheckout(planName) {
     summaryDiscountRow.style.display = 'none';
     summaryTotal.textContent = `$${basePrice.toFixed(2)}`;
     
+    // Hide payment tabs/headers/inputs since Free is 100% cardless
+    const paymentTabs = document.querySelector('.payment-tabs');
+    const paymentHeaders = document.querySelector('.payment-mode-header-row');
+    const paymentCardSection = document.getElementById('payment-card-section');
+    const submitBtn = document.getElementById('pay-submit-btn');
+    
+    if (paymentTabs) paymentTabs.style.display = 'none';
+    if (paymentHeaders) paymentHeaders.style.display = 'none';
+    if (paymentCardSection) paymentCardSection.style.display = 'none';
+    if (submitBtn) submitBtn.textContent = 'Get Free Workstation License';
+    
     checkoutModal.classList.add('active');
 }
 
