@@ -661,8 +661,8 @@ function processPayment(e) {
         "Finalizing Uplink Handshake..."
     ];
     
-    // Check if Stripe Elements is active and mounted
-    if (stripeInstance && stripeCardElement && document.getElementById('stripe-card-mount').style.display === 'block') {
+    // Check if Stripe Elements is active and mounted AND it's a paid plan
+    if (currentActivePlan !== 'Free Edition' && stripeInstance && stripeCardElement && document.getElementById('stripe-card-mount').style.display === 'block') {
         processingStep.textContent = "Tokenizing card data via Stripe API...";
         stripeInstance.createToken(stripeCardElement).then(function(result) {
             if (result.error) {
