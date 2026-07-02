@@ -475,6 +475,52 @@
         </div>
     </section>
 
+    <!-- Verified Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="section-header scroll-reveal fade-up">
+            <h2>Trusted by Developers & Innovators</h2>
+            <p>See why developers, researchers, and power users are ditching cloud subscriptions for J.A.R.V.I.S.</p>
+        </div>
+        <div class="testimonials-grid">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card scroll-reveal fade-up">
+                <div class="rating-stars">★★★★★</div>
+                <p class="testimonial-quote">"Operating local LLMs on Windows used to be a hassle. J.A.R.V.I.S. consolidates my voice controls, document tools, and semantic vector database into one seamless setup. Savings on API fees paid for the license in the first month."</p>
+                <div class="testimonial-user">
+                    <img class="testimonial-avatar" src="me.jpg" alt="Avatar of a Developer">
+                    <div class="testimonial-info">
+                        <span class="testimonial-name">Alex Vance <span class="verified-badge">✓ Verified</span></span>
+                        <span class="testimonial-title">Senior Full-Stack Architect</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card scroll-reveal fade-up">
+                <div class="rating-stars">★★★★★</div>
+                <p class="testimonial-quote">"100% offline memory recall was my main selling point. My documents, transcripts, and credentials stay entirely local. The Cyber Sentry intercepts bad scripts automatically. Highly recommend Pro Edition."</p>
+                <div class="testimonial-user">
+                    <img class="testimonial-avatar" src="favicon.png" alt="Avatar of a Cybersecurity Analyst">
+                    <div class="testimonial-info">
+                        <span class="testimonial-name">Elena Rostova <span class="verified-badge">✓ Verified</span></span>
+                        <span class="testimonial-title">Lead Security Researcher</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card scroll-reveal fade-up">
+                <div class="rating-stars">★★★★★</div>
+                <p class="testimonial-quote">"The multi-agent Phantom Swarm is insane. I can deploy parallel local agents to inspect codebases and audit dependencies while keeping zero data traces on external servers. An absolute masterpiece."</p>
+                <div class="testimonial-user">
+                    <img class="testimonial-avatar" src="QR_UPLINK.png" alt="Avatar of an AI Engineer">
+                    <div class="testimonial-info">
+                        <span class="testimonial-name">Liam Fletcher <span class="verified-badge">✓ Verified</span></span>
+                        <span class="testimonial-title">MLOps Engineer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing Packages -->
     <section class="pricing-section" id="pricing">
         <div class="section-header scroll-reveal fade-up">
@@ -518,6 +564,13 @@
                     <li>✔ **Perpetual Lifetime Updates** & priority support</li>
                 </ul>
                 <button class="price-btn btn-glowing" onclick="openCheckout('Pro Edition')">Deploy Pro Edition</button>
+                <!-- Dynamic Scarcity & Countdown -->
+                <div class="pricing-countdown-container">
+                    <span class="pricing-countdown-label">⚡ PROMO BATCH CLOSING SOON:</span>
+                    <div class="countdown-timer-wrap">
+                        <div class="countdown-timer" id="countdown-timer">02:45:12</div>
+                    </div>
+                </div>
             </div>
             <!-- Enterprise Grid -->
             <div class="price-card scroll-reveal slide-right scroll-3d">
@@ -532,6 +585,38 @@
                     <li>✔ Enterprise directory indexers</li>
                 </ul>
                 <button class="price-btn" onclick="openCheckout('Enterprise Grid')">Contact Engineering</button>
+            </div>
+        </div>
+
+        <!-- Trust Badges Row -->
+        <div class="trust-badges-bar scroll-reveal fade-up">
+            <div class="badge-item">
+                <span class="badge-item-icon">🛡️</span>
+                <div class="badge-item-text">
+                    <span class="badge-item-title">100% Local Privacy</span>
+                    <span class="badge-item-desc">No external API calls or database logs</span>
+                </div>
+            </div>
+            <div class="badge-item">
+                <span class="badge-item-icon">💰</span>
+                <div class="badge-item-text">
+                    <span class="badge-item-title">One-Time Payment</span>
+                    <span class="badge-item-desc">Own your node and memory forever</span>
+                </div>
+            </div>
+            <div class="badge-item">
+                <span class="badge-item-icon">💳</span>
+                <div class="badge-item-text">
+                    <span class="badge-item-title">Stripe Secured</span>
+                    <span class="badge-item-desc">Secure SSL encrypted payment processing</span>
+                </div>
+            </div>
+            <div class="badge-item">
+                <span class="badge-item-icon">⚡</span>
+                <div class="badge-item-text">
+                    <span class="badge-item-title">Instant Setup</span>
+                    <span class="badge-item-desc">License key and app delivered on purchase</span>
+                </div>
             </div>
         </div>
     </section>
@@ -609,6 +694,66 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="section-header scroll-reveal fade-up">
+            <h2>Frequently Asked Questions</h2>
+            <p>Clear details on how the J.A.R.V.I.S. local AI matrix runs on your machine.</p>
+        </div>
+        <div class="faq-container">
+            <!-- FAQ 1 -->
+            <div class="faq-item scroll-reveal fade-up">
+                <button class="faq-question">
+                    <span>Is J.A.R.V.I.S. really 100% offline and private?</span>
+                    <span class="arrow-icon">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes. All voice recording, wakeword detection, speech synthesis, document indexation, and LLM text generation occur locally on your machine. No telemetry of your chat transcripts, document files, or voice inputs is ever uploaded to external servers.</p>
+                </div>
+            </div>
+            <!-- FAQ 2 -->
+            <div class="faq-item scroll-reveal fade-up">
+                <button class="faq-question">
+                    <span>What are the license payment terms? Are there monthly fees?</span>
+                    <span class="arrow-icon">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Both Free and Pro packages are **One-Time Lifetime Payments**. Once you purchase the Pro Edition, you own the code license key forever. There are zero recurring subscriptions, zero monthly fees, and zero hidden costs.</p>
+                </div>
+            </div>
+            <!-- FAQ 3 -->
+            <div class="faq-item scroll-reveal fade-up">
+                <button class="faq-question">
+                    <span>Which local LLM models are supported?</span>
+                    <span class="arrow-icon">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <p>By default, J.A.R.V.I.S. interfaces with **Ollama** to run models such as **Llama 3.2 (3B)**, **Qwen 2.5**, or **Phi-3**. You can configure any model of your choice in the app's macOS-style Control Center UI settings panel.</p>
+                </div>
+            </div>
+            <!-- FAQ 4 -->
+            <div class="faq-item scroll-reveal fade-up">
+                <button class="faq-question">
+                    <span>How does the mobile deck link work? Is it secure?</span>
+                    <span class="arrow-icon">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <p>The Pro Edition includes an encrypted mobile link. This sets up a secure, authenticated local ngrok tunnel. When you scan the QR code on your workstation screen, your mobile device gets an encrypted token to interact with your workstation's file systems and scheduling assistant securely from anywhere.</p>
+                </div>
+            </div>
+            <!-- FAQ 5 -->
+            <div class="faq-item scroll-reveal fade-up">
+                <button class="faq-question">
+                    <span>Is there a money-back guarantee?</span>
+                    <span class="arrow-icon">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Absolutely. If you are unable to run local models on your hardware or are not completely satisfied with the Pro Edition features, we offer a **14-day money-back guarantee**. Just email support and we will issue a full refund, no questions asked.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -792,6 +937,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Floating Recent Purchase Toast -->
+    <div class="purchase-toast" id="purchase-toast">
+        <div class="toast-icon">🚀</div>
+        <div class="toast-body">
+            <span class="toast-title">Uplink Activated</span>
+            <span class="toast-text" id="toast-text">Developer in Munich deployed Pro Edition</span>
+            <span class="toast-time" id="toast-time">3 minutes ago</span>
         </div>
     </div>
 

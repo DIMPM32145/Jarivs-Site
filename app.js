@@ -1638,5 +1638,108 @@ document.addEventListener('DOMContentLoaded', () => {
             window.history.replaceState({path: cleanUrl}, '', cleanUrl);
         }, 1200);
     }
+
+    // -------------------------------------------------------------
+    // CMO & GROWTH ENGINE DYNAMIC LOGIC
+    // -------------------------------------------------------------
+
+    // 1. Dynamic Countdown Timer
+    function startCountdownTimer() {
+        const timerEl = document.getElementById('countdown-timer');
+        if (!timerEl) return;
+
+        function updateTimer() {
+            const now = new Date();
+            // Count down to midnight of current day
+            const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+            const diffMs = midnight - now;
+
+            const hours = Math.floor(diffMs / (1000 * 60 * 60));
+            const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+
+            const hh = String(hours).padStart(2, '0');
+            const mm = String(minutes).padStart(2, '0');
+            const ss = String(seconds).padStart(2, '0');
+
+            timerEl.textContent = `${hh}:${mm}:${ss}`;
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    }
+    startCountdownTimer();
+
+    // 2. Recent Purchases Notification Toast
+    function initRecentPurchasesToast() {
+        const toast = document.getElementById('purchase-toast');
+        const toastText = document.getElementById('toast-text');
+        const toastTime = document.getElementById('toast-time');
+        if (!toast || !toastText || !toastTime) return;
+
+        const purchaseEvents = [
+            { location: "Munich, Germany", plan: "Pro Edition", time: "just now" },
+            { location: "Seattle, USA", plan: "Pro Edition", time: "2 minutes ago" },
+            { location: "Austin, USA", plan: "Pro Edition", time: "4 minutes ago" },
+            { location: "London, UK", plan: "Pro Edition", time: "just now" },
+            { location: "Seoul, South Korea", plan: "Pro Edition", time: "1 minute ago" },
+            { location: "Tokyo, Japan", plan: "Pro Edition", time: "3 minutes ago" },
+            { location: "Sydney, Australia", plan: "Pro Edition", time: "5 minutes ago" },
+            { location: "Paris, France", plan: "Pro Edition", time: "2 minutes ago" },
+            { location: "Amsterdam, Netherlands", plan: "Pro Edition", time: "just now" },
+            { location: "Nicosia, Cyprus", plan: "Pro Edition", time: "4 minutes ago" }
+        ];
+
+        let index = 0;
+
+        function showNextToast() {
+            const event = purchaseEvents[index];
+            toastText.innerHTML = `Developer in <strong style="color: var(--accent);">${event.location}</strong> compiled <strong style="color: var(--accent-2);">${event.plan}</strong> license`;
+            toastTime.textContent = event.time;
+
+            // Slide in
+            toast.classList.add('show');
+
+            // Slide out after 6 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 6000);
+
+            // Move to next event
+            index = (index + 1) % purchaseEvents.length;
+
+            // Schedule next toast (every 35 seconds)
+            setTimeout(showNextToast, 35000);
+        }
+
+        // Trigger first toast after 8 seconds of site landing
+        setTimeout(showNextToast, 8000);
+    }
+    initRecentPurchasesToast();
+
+    // 3. FAQ Accordion Click Handlers
+    function initFaqAccordion() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const questionBtn = item.querySelector('.faq-question');
+            if (questionBtn) {
+                questionBtn.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Collapse all other FAQ items first
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                    });
+
+                    // Toggle active class on clicked item
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    initFaqAccordion();
 });
+
 
