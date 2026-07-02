@@ -2950,16 +2950,16 @@ body::before {
     transition: transform 0.3s ease;
 }
 
-.faq-item.active {
+.faq-item.open {
     border-color: var(--accent);
     background: rgba(0, 229, 255, 0.02);
 }
 
-.faq-item.active .faq-question {
+.faq-item.open .faq-question {
     color: var(--accent);
 }
 
-.faq-item.active .faq-question .arrow-icon {
+.faq-item.open .faq-question .arrow-icon {
     transform: rotate(180deg);
     color: var(--accent);
 }
@@ -2971,7 +2971,7 @@ body::before {
     overflow: hidden;
 }
 
-.faq-item.active .faq-answer-wrapper {
+.faq-item.open .faq-answer-wrapper {
     grid-template-rows: 1fr;
 }
 
@@ -2984,7 +2984,7 @@ body::before {
     line-height: 1.6;
 }
 
-.faq-item.active .faq-answer {
+.faq-item.open .faq-answer {
     padding: 0 30px 25px 30px;
 }
 

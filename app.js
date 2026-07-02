@@ -1724,16 +1724,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const questionBtn = item.querySelector('.faq-question');
             if (questionBtn) {
                 questionBtn.addEventListener('click', () => {
-                    const isActive = item.classList.contains('active');
+                    const isOpen = item.classList.contains('open');
                     
                     // Collapse all other FAQ items first
                     faqItems.forEach(otherItem => {
-                        otherItem.classList.remove('active');
+                        otherItem.classList.remove('open');
                     });
 
-                    // Toggle active class on clicked item
-                    if (!isActive) {
-                        item.classList.add('active');
+                    // Toggle open class on clicked item
+                    if (!isOpen) {
+                        item.classList.add('open');
                     }
                 });
             }
