@@ -3055,13 +3055,24 @@ body::before {
     padding-top: 15px;
 }
 
-.testimonial-avatar {
+.testimonial-avatar-svg {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.1);
-    object-fit: cover;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    transition: all 0.3s ease;
 }
+
+.testimonial-card:hover .testimonial-avatar-svg {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+}
+
 
 .testimonial-info {
     display: flex;
